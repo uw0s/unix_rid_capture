@@ -72,7 +72,7 @@ uid_t                     nobody  = 1000;
 gid_t                     nogroup = 1000;
 const mode_t              file_mode = 0666, dir_mode = 0777;
 
-static int                enable_display = 0, enable_udp = 0, json_socket = -1,
+static int                enable_display = 0, enable_udp = 1, json_socket = -1,
                           max_udp_length = 0;
 static char              *log_dir = NULL, *www_dir = NULL;
 static double             setup_ms = 0.0, loop_us = 0.0;
