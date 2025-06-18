@@ -1345,6 +1345,7 @@ int write_json(char *json) {
   } else {
 
     fputs(json,stdout);
+    fflush(stdout);
   }
 
   return 0;
