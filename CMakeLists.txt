@@ -98,18 +98,21 @@ if(${enable_pcap})
   set(rcap_libraries pcap ${rcap_libraries})
 endif()
 
-set(rid_capture_source ${rid_capture_source} opendroneid.c)
+set(rid_capture_source ${rid_capture_source} opendroneid-core-c/libopendroneid/opendroneid.c)
 set(rid_capture_source ${rid_capture_source} summary.c m_per_deg.c)
 
 add_executable(rid_capture
   ${rid_capture_source})
+target_include_directories(rid_capture PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/opendroneid-core-c/libopendroneid)
 target_link_libraries(rid_capture ${rcap_libraries})
 #
 add_executable(nrf_sniffer nrf_sniffer.c)
+target_include_directories(nrf_sniffer PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/opendroneid-core-c/libopendroneid)
 target_link_libraries(nrf_sniffer ${base_libraries})
 set_target_properties(nrf_sniffer PROPERTIES COMPILE_FLAGS "-DSTANDALONE=1")
 #
 add_executable(bluez_sniffer bluez_sniffer.c)
+target_include_directories(bluez_sniffer PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/opendroneid-core-c/libopendroneid)
 target_link_libraries(bluez_sniffer bluetooth ${base_libraries})
 set_target_properties(bluez_sniffer PROPERTIES COMPILE_FLAGS "-DSTANDALONE=1")
 #
